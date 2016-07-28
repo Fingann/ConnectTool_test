@@ -1,0 +1,304 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accessNo": {
+            "type": "string"
+          },
+          "accessToken": {
+            "type": "string"
+          },
+          "adhocAktiv": {
+            "type": "string"
+          },
+          "agent_number": {
+            "type": "string"
+          },
+          "AuthenticateCode": {
+            "type": "string"
+          },
+          "AuthenticatePwd": {
+            "type": "string"
+          },
+          "AuthenticateToken": {
+            "type": "string"
+          },
+          "AuthenticateUser": {
+            "type": "string"
+          },
+          "bNumDesc": {
+            "type": "string"
+          },
+          "call_tag": {
+            "type": "string"
+          },
+          "callerDescription": {
+            "type": "string"
+          },
+          "CatalogPhoneSearchDone": {
+            "type": "string"
+          },
+          "catalogPhoneSearchResult": {
+            "type": "string"
+          },
+          "catalogToSearch": {
+            "type": "string"
+          },
+          "ciq_active": {
+            "type": "string"
+          },
+          "ciq_destination": {
+            "type": "string"
+          },
+          "ContactFirstName_1": {
+            "type": "string"
+          },
+          "ContactLastName_1": {
+            "type": "string"
+          },
+          "crmdb_contact_name": {
+            "type": "string"
+          },
+          "crmdb_lastcall_agent_names": {
+            "type": "string"
+          },
+          "crmdb_lastcall_log_id": {
+            "type": "string"
+          },
+          "crmdb_lastcall_start": {
+            "type": "string"
+          },
+          "crmdb_more_calls": {
+            "type": "string"
+          },
+          "crmKml": {
+            "type": "string"
+          },
+          "current_state": {
+            "type": "string"
+          },
+          "dtmf.tone_detection_mode": {
+            "type": "string"
+          },
+          "eh_wav_caller_hangup": {
+            "type": "string"
+          },
+          "eh_wav_ciq_call_caller": {
+            "type": "string"
+          },
+          "eh_wav_ciq_unavailable": {
+            "type": "string"
+          },
+          "eh_wav_hold": {
+            "type": "string"
+          },
+          "eh_wav_screened": {
+            "type": "string"
+          },
+          "eh_wav_unavailable": {
+            "type": "string"
+          },
+          "lindorf_serviceid": {
+            "type": "string"
+          },
+          "LogCallExit": {
+            "type": "string"
+          },
+          "min": {
+            "type": "string"
+          },
+          "NumOfContacts": {
+            "type": "string"
+          },
+          "popup_name": {
+            "type": "string"
+          },
+          "propertyValue": {
+            "type": "string"
+          },
+          "qSize": {
+            "type": "string"
+          },
+          "queue.average_speak_time": {
+            "type": "string"
+          },
+          "recordingActive": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "serviceAdHoc": {
+            "type": "string"
+          },
+          "setBackgroundColor": {
+            "type": "string"
+          },
+          "system_absolute_uri": {
+            "type": "string"
+          },
+          "system_accessno": {
+            "type": "string"
+          },
+          "system_base_uri": {
+            "type": "string"
+          },
+          "system_call_progress": {
+            "type": "string"
+          },
+          "system_CalledPartyNumber": {
+            "type": "string"
+          },
+          "system_caller_ano": {
+            "type": "string"
+          },
+          "system_caller_progress": {
+            "type": "string"
+          },
+          "system_CallingPartyNumber": {
+            "type": "string"
+          },
+          "system_CallingPartyNumberRestriction": {
+            "type": "string"
+          },
+          "system_country": {
+            "type": "string"
+          },
+          "system_custkey": {
+            "type": "string"
+          },
+          "system_DefaultCallingPartyNumber": {
+            "type": "string"
+          },
+          "system_deny_recording": {
+            "type": "string"
+          },
+          "system_encoding": {
+            "type": "string"
+          },
+          "system_guid": {
+            "type": "string"
+          },
+          "system_hostip": {
+            "type": "string"
+          },
+          "system_hostname": {
+            "type": "string"
+          },
+          "system_iq_cc_uri": {
+            "type": "string"
+          },
+          "system_iqid": {
+            "type": "string"
+          },
+          "system_is_out_of_the_blue": {
+            "type": "string"
+          },
+          "system_kml": {
+            "type": "string"
+          },
+          "system_last_called": {
+            "type": "string"
+          },
+          "system_last_event_args": {
+            "type": "string"
+          },
+          "system_last_user_id": {
+            "type": "string"
+          },
+          "system_last_user_num": {
+            "type": "string"
+          },
+          "system_name": {
+            "type": "string"
+          },
+          "system_numbers": {
+            "type": "string"
+          },
+          "system_queue_agents": {
+            "type": "string"
+          },
+          "system_queue_available_agents": {
+            "type": "string"
+          },
+          "system_queue_estimate": {
+            "type": "string"
+          },
+          "system_queue_id": {
+            "type": "string"
+          },
+          "system_queue_key": {
+            "type": "string"
+          },
+          "system_queue_place": {
+            "type": "string"
+          },
+          "system_queue_time": {
+            "type": "string"
+          },
+          "system_queue_wait_by_last_calls": {
+            "type": "string"
+          },
+          "system_queue_wait_by_last_minutes": {
+            "type": "string"
+          },
+          "system_RedirectingNumber": {
+            "type": "string"
+          },
+          "system_RemoveSecretAnoIfAdditional": {
+            "type": "string"
+          },
+          "system_secret_caller": {
+            "type": "string"
+          },
+          "system_secret_number": {
+            "type": "string"
+          },
+          "system_session_id": {
+            "type": "string"
+          },
+          "system_speaktime": {
+            "type": "string"
+          },
+          "system_version": {
+            "type": "string"
+          },
+          "textColor": {
+            "type": "string"
+          },
+          "timeBeforeOverflow": {
+            "type": "string"
+          },
+          "xhcKmlData": {
+            "type": "string"
+          },
+          "xml_in_data": {
+            "type": "string"
+          }
+        },
+        "required": [
+         
+          "ciq_destination",
+    
+          "current_state",
+        
+          "popup_name",
+         
+          "system_call_progress"
+         
+        ]
+      }
+    }
+  },
+  "required": [
+    "Calls"
+  ]
+}

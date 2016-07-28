@@ -1,0 +1,117 @@
+﻿<Controls:MetroWindow x:Class="ConnectTool.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:converter="clr-namespace:ConnectTool.Helpers.Converters"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:ignore="http://www.galasoft.ch/ignore"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      Title="MVVM Light Application"
+                      Width="900"
+                      Height="600"
+                      mc:Ignorable="d ignore">
+
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+                <ResourceDictionary Source="Skins/FauxLable.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converter:PopupMessageConverter x:Key="PopupMessageConverter" />
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converter:BoolToCollapsedConverter x:Key="BoolToCollapsedConverter" />
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+
+    <Controls:MetroWindow.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}" />
+    </Controls:MetroWindow.DataContext>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*" />
+            <ColumnDefinition Width="808*" />
+            <ColumnDefinition Width="41*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="465*" />
+            <RowDefinition Height="106*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1"
+                   Margin="393,261,394,155"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="36"
+                   FontWeight="Bold"
+                   Foreground="Purple"
+                   Text="{Binding WelcomeTitle}"
+                   TextWrapping="Wrap" />
+
+        <!--  Background="{Binding PopupMessage.MessageColor, UpdateSourceTrigger=PropertyChanged}"  -->
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="3"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             Background="{StaticResource AccentColorBrush}"
+                             Visibility="{Binding MessageVisible,
+                                                  UpdateSourceTrigger=PropertyChanged,
+                                                  Converter={StaticResource BoolToVisibilityConverter}}">
+            <Viewbox Margin="5,5,5,7" Stretch="Uniform">
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <TextBox x:Name="Haderlbl"
+                             Width="auto"
+                             Height="auto"
+                             Foreground="White"
+                             VerticalContentAlignment="Center"
+                             FontSize="20"
+                             Style="{StaticResource FauxLabel}"
+                             Text="{Binding PopupMessage.Category,
+                                            UpdateSourceTrigger=PropertyChanged,
+                                            Converter={StaticResource PopupMessageConverter}}"
+                             TextAlignment="Center"
+                             TextWrapping="NoWrap" />
+
+                    <StackPanel Margin="10,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <TextBox x:Name="subHeaderText"
+                                 Foreground="White"
+                                 Width="900"
+                                 VerticalAlignment="Stretch"
+                                 FontSize="20"
+                                 Style="{StaticResource FauxLabel}"
+                                 Text="{Binding PopupMessage.Message,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 TextAlignment="Left"
+                                 TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Button Width="auto"
+                            Height="auto"
+                            Margin="5,5,15,5"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Command="{Binding HideErrorMessageCommand}"
+                            FontSize="35"
+                            Foreground="White"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Visibility="{Binding PopupMessage.ShowButton,
+                                                 UpdateSourceTrigger=PropertyChanged,
+                                                 Converter={StaticResource BoolToCollapsedConverter}}">
+                        OK
+                    </Button>
+                </StackPanel>
+            </Viewbox>
+        </materialDesign:Card>
+
+
+    </Grid>
+</Controls:MetroWindow>
+
