@@ -1,0 +1,25 @@
+﻿<dialogs:CustomDialog x:Class="ConnectTool.Dialogs.View.DialogView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      DataContext="{Binding Dialog,
+                                            Source={StaticResource Locator}}"
+                      d:DesignHeight="300"
+                      d:DesignWidth="300"
+                      mc:Ignorable="d">
+    <!---->
+    <dialogs:CustomDialog.Content>
+        <StackPanel>
+            <TextBlock Text="Custom Dialog!" TextAlignment="Center" />
+            <TextBox metro:TextBoxHelper.Watermark="Add Message Here" Text="{Binding DialogMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+    </dialogs:CustomDialog.Content>
+    <dialogs:CustomDialog.DialogBottom>
+        <Button Command="{Binding SendMessageCommand}"
+                Content="Send Message"
+                DockPanel.Dock="Top" />
+    </dialogs:CustomDialog.DialogBottom>
+</dialogs:CustomDialog>

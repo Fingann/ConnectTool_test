@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ConnectTool.Dialogs.View;
 using ConnectTool.Helpers.Interface;
 using GalaSoft.MvvmLight;
 using ConnectTool.Model;
@@ -8,6 +9,7 @@ using ConnectTool.Model.LogWatcher;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
+using MahApps.Metro.Controls.Dialogs;
 using NLog;
 
 namespace ConnectTool.ViewModel
@@ -51,16 +53,18 @@ namespace ConnectTool.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(IDialogCoordinator dialogCoordinator, IDataService dataService )//
         {
             //Message Regiser
             MessengerInstance.Register<NotificationMessage<Call>>(this, CallNotify);
             MessengerInstance.Register<NotificationMessage<IPopupMessage>>(this, NotifyPopupMessage);
 
+            Messenger.Default.Register<string>(this, ProcessMessage);
 
-
-
+            _dialogCoordinator = dialogCoordinator;
             _dataService = dataService;
+
+
             _dataService.GetData(
                 (item, error) =>
                 {
@@ -86,9 +90,25 @@ namespace ConnectTool.ViewModel
 
                  PopupMessage = item;
              });
+            TestDialogServiceCommand = new RelayCommand(async () =>
+            {
+                var result = await _dialogCoordinator.ShowMessageAsync(this, "Teste", "Teste", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings
+                {
+                    AffirmativeButtonText = "OK",
+                    NegativeButtonText = "CANCELAR",
+                    AnimateShow = true,
+                    AnimateHide = false
+                    
+                });
 
+                var test = "loloasd";
+
+            });
 
         }
+
+        public RelayCommand TestDialogServiceCommand { get; set; }
+
 
         #region Message Notification
         private void NotifyPopupMessage(NotificationMessage<IPopupMessage> obj)
@@ -112,6 +132,40 @@ namespace ConnectTool.ViewModel
 
         #endregion Message Notification
 
+
+        #region Dialogs
+        private readonly IDialogCoordinator _dialogCoordinator;
+        private readonly DialogView _dialogView = new DialogView();
+
+        private string _dialogResult;
+        public string DialogResult
+        {
+            get { return _dialogResult; }
+            set
+            {
+                if (_dialogResult == value)
+                {
+                    return;
+                }
+                _dialogResult = value;
+                RaisePropertyChanged();
+            }
+        }
+        private RelayCommand _showDialogCommand;
+        public RelayCommand ShowDialogCommand => _showDialogCommand
+                                                 ?? (_showDialogCommand = new RelayCommand(ShowDialog));
+
+        private async void ShowDialog()
+        {
+            await _dialogCoordinator.ShowMetroDialogAsync(this, _dialogView);
+        }
+
+        private async void ProcessMessage(string messageContents)
+        {
+            DialogResult = messageContents;
+            await _dialogCoordinator.HideMetroDialogAsync(this, _dialogView);
+        }
+        #endregion Dialogs
 
         #region IpopupMessage
 

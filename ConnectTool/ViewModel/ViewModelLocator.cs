@@ -9,12 +9,15 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
+using ConnectTool.Dialogs.ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using ConnectTool.Model;
 using ConnectTool.Model.LogWatcher;
 using GalaSoft.MvvmLight.Messaging;
+using MahApps.Metro.Controls.Dialogs;
+
 
 namespace ConnectTool.ViewModel
 {
@@ -39,10 +42,12 @@ namespace ConnectTool.ViewModel
             {
                 SimpleIoc.Default.Register<IDataService, DataService>();
             }
-
-            SimpleIoc.Default.Register<MainViewModel>(true);
+            SimpleIoc.Default.Register<IDialogCoordinator, DialogCoordinator>();
+            SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CallWatcher>(true);
             
+            SimpleIoc.Default.Register<DialogViewModel>();
+
         }
 
         /// <summary>
@@ -63,6 +68,14 @@ namespace ConnectTool.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<CallWatcher>();
+            }
+        }
+
+        public DialogViewModel Dialog
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DialogViewModel>();
             }
         }
 

@@ -100,10 +100,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Dialogs\ViewModel\DialogViewModel.cs" />
+    <Compile Include="Dialogs\View\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Helpers\Converters\BoolToCollapsedConverter.cs" />
     <Compile Include="Helpers\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\FontSizeConverter.cs" />
+    <Compile Include="Helpers\Converters\MultipleParameterConverter.cs" />
     <Compile Include="Helpers\Converters\PopupMessageConverter.cs" />
     <Compile Include="Helpers\Enum\PopupMessageCategory.cs" />
     <Compile Include="Helpers\Interface\IPopupMessage.cs" />
@@ -121,6 +126,10 @@
     <Compile Include="Helpers\Messenges\CallWatcherMesseage.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Dialogs\View\DialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
